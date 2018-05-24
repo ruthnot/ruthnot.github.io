@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Main Page on Peach Colony</title>
+    <link>https://ruthnot.github.io/</link>
+    <description>Recent content in Main Page on Peach Colony</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://ruthnot.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Module One: Pointers</title>
+      <link>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_1_pointers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_1_pointers/</guid>
+      <description>Pointers A pointer is simply a variable that holds the memory address of an object in C++. To create a pointer variable, use * plus the data type. such as:
+int num = 3; int* pNum = &amp;amp;num;   Here, the &amp;amp; is the address-of operator. what we did is assigning the address of variable &amp;ldquo;num&amp;rdquo; to the pointer (pointer variable) pNum. Notice thatint* pNum and int *pNumis essentially the same.</description>
+    </item>
+    
+    <item>
+      <title>Module Two: More C&#43;&#43; Class</title>
+      <link>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/</guid>
+      <description>Splitting Classes  In C++, the common practice is to create your classes as two separate files. The header files, with a .h extension on the filename, is used to contain the declarations found in the class file. Header file is more like a &amp;ldquo;manual&amp;rdquo; to the user, so that user only needs to know how to use this class, ignoring how methods are actually implemented. Declarations in the header file includes function prototypes and class constructors typically.</description>
+    </item>
+    
+  </channel>
+</rss>

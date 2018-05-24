@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://ruthnot.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruthnot.github.io/intermediate_c&#43;&#43;/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ruthnot.github.io/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_1_pointers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ruthnot.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
