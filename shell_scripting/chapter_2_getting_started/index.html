@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Module 2: More C&#43;&#43; Class :: Peach Colony</title>
+    <title>Chapter 2. Getting Started :: Peach Colony</title>
     
     
     <link href="/css/nucleus.css?1527233850" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/">
+  <body class="" data-url="/shell_scripting/chapter_2_getting_started/">
     <nav id="sidebar" class="">
 
 
@@ -91,7 +91,7 @@
   
     
     <li data-nav-id="/intermediate_c&#43;&#43;/" title="Intermediate C&#43;&#43;" class="dd-item 
-        parent
+        
         
         
         ">
@@ -134,7 +134,7 @@
  
   
     
-      <li data-nav-id="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/" title="Module 2: More C&#43;&#43; Class" class="dd-item active">
+      <li data-nav-id="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/" title="Module 2: More C&#43;&#43; Class" class="dd-item ">
         <a href="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/">
         Module 2: More C&#43;&#43; Class
         
@@ -180,7 +180,7 @@
   
     
     <li data-nav-id="/shell_scripting/" title="Shell Scripting" class="dd-item 
-        
+        parent
         
         
         ">
@@ -204,7 +204,7 @@
  
   
     
-      <li data-nav-id="/shell_scripting/chapter_2_getting_started/" title="Chapter 2. Getting Started" class="dd-item ">
+      <li data-nav-id="/shell_scripting/chapter_2_getting_started/" title="Chapter 2. Getting Started" class="dd-item active">
         <a href="/shell_scripting/chapter_2_getting_started/">
         Chapter 2. Getting Started
         
@@ -271,7 +271,7 @@
             
           
           
-            <a href='/'>Main Page</a> > <a href='/intermediate_c++/'>Intermediate C++</a> > Module 2: More C++ Class
+            <a href='/'>Main Page</a> > <a href='/shell_scripting/'>Shell Scripting</a> > Chapter 2. Getting Started
           
          
           
@@ -291,9 +291,16 @@
 <ul>
 <li>
 <ul>
-<li><a href="#splitting-classes"><strong>Splitting Classes</strong></a></li>
-<li><a href="#constructors-and-destructors"><strong>Constructors and Destructors</strong></a></li>
-<li><a href="#scope-in-classes"><strong>Scope in Classes</strong></a></li>
+<li><a href="#2-1-scripting-languages-versus-compiled-languages">2.1 Scripting Languages Versus Compiled Languages</a></li>
+<li><a href="#2-3-a-simple-script">2.3 A Simple Script</a></li>
+<li><a href="#2-4-self-contained-scripts-the-first-line">2.4 Self-Contained Scripts: The #! First Line</a></li>
+<li><a href="#2-5-basic-shell-constructs">2.5 Basic Shell Constructs</a>
+<ul>
+<li><a href="#printf">printf</a></li>
+<li><a href="#basic-i-o-redirection">Basic I/O Redirection</a></li>
+<li><a href="#special-files-dev-null-and-dev-tty">Special files: /dev/null and /dev/tty</a></li>
+<li><a href="#basic-command-searching">Basic Command Searching</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -310,7 +317,7 @@
         
         <div id="body-inner">
           
-            <h1>Module 2: More C&#43;&#43; Class</h1>
+            <h1>Chapter 2. Getting Started</h1>
           
 
         
@@ -318,186 +325,107 @@
 
 
 
-<h4 id="splitting-classes"><strong>Splitting Classes</strong></h4>
+<h4 id="2-1-scripting-languages-versus-compiled-languages">2.1 Scripting Languages Versus Compiled Languages</h4>
 
 <ul>
-<li>In C++, the common practice is to create your classes as two separate files. The header files, with a
-.h extension on the filename, is used to contain the declarations found in the class file.</li>
-<li>Header file is more like a &ldquo;manual&rdquo; to the user, so that user only needs to know how to use this class, ignoring how
-methods are actually implemented.</li>
-<li>Declarations in the header file includes function prototypes
-and class constructors typically.</li>
-<li>The actual implementation of the class are in a .cpp or .c file.</li>
+<li>Most larger scale programs are written in a compiled language, such as Fortran, Ada, Pascal, C, C++ or Java.</li>
+<li>Compiled language are efficient, but usually work at a low level.</li>
+<li>Scripting languages are: Shell, Python, Perl, Ruby</li>
+<li>The advantage of scripting languages is that they are often higher level, being able to deal with objects such as
+files and directories more easily.</li>
+<li>The disadvantage of scripting language is that they are less efficient.</li>
 </ul>
 
-<p>Next, lets take a look at an example header file: Math.h</p>
+<h4 id="2-3-a-simple-script">2.3 A Simple Script</h4>
 
-<pre><code>    // Math.h
-    // Header file for the Math class
-
-    #pragma once
-
-    // Math class definition
-    static class Math
-    {
-        public:
-
-        // given base and exponent, calculate value
-        static int pow(int base, int exp);
-
-    };
-</code></pre>
+<p><strong>$ who</strong></p>
 
 <ul>
-<li><code>#pragma once</code> is a preprocessor directive(like <code>#include</code>) that tells the compiler
-to only include this header once, regardless of how many times it has been imported in the program</li>
-<li>The <code>static</code> keyword meaning we don&rsquo;t need to instantiate this class before using. Otherwise, we
-need to do:</li>
+<li>shows know how many users are currently logged in</li>
 </ul>
 
-<pre><code>    Math math = new Math();
-    math.pow(2, 8);
-</code></pre>
-
-<p>this is helpful for a utility class such as this math class. Notice that the static class is only supported
-by Visual Studio, most the cases, people only use static member function instead of class.</p>
-
-<p>Next, let&rsquo;s take a look at the implementation of this class, the .cpp file:</p>
-
-<pre><code>    #include &quot;stdafx.h&quot;
-    #include &quot;Math.h&quot;
-
-    int Math::pow(int base, int exp)
-    {
-        int result = 1;
-
-        for (int i = 0; i &lt; exp; i++)
-        {
-            result = result * base;
-        }
-
-        return result;
-    }
-</code></pre>
+<p><strong>$ who | wc -l</strong></p>
 
 <ul>
-<li>In the actual function implementation, we use Math::pow instead of just Math. The <strong>::</strong>
-is a <strong>scope resolution operator</strong>. In this case, it is used to call static members of the class.</li>
+<li>wc: word count, counts lines, words, and characters.</li>
+<li>wc -l: count just lines</li>
+<li>|: pipe symbol creates a pipe between two programs. who&rsquo;s output becomes wc&rsquo;s input</li>
 </ul>
 
-<h4 id="constructors-and-destructors"><strong>Constructors and Destructors</strong></h4>
+<p><strong>$ cat &gt; nusers</strong>: create the file, and copy terminal input with cat (short for concatenate)</p>
+
+<p><strong>who | wc -l</strong>: type in desired command</p>
+
+<p><strong>^D</strong>: Ctrl-D is end of file</p>
+
+<p><strong>$ chmod +x nusers</strong>: Make it executable</p>
+
+<p><strong>$ ./nusers</strong>: Execute the script</p>
+
+<h4 id="2-4-self-contained-scripts-the-first-line">2.4 Self-Contained Scripts: The #! First Line</h4>
 
 <ul>
-<li>A constructor is used to initialize data members of a class</li>
-<li>Each class will have only one default constructor. If you don&rsquo;t manually create one, the compiler
-will create one automatically.</li>
-<li>The default constructor initialize member variables to default values</li>
+<li><p>When runs a program, kernel will start a new process and run that program in that process. Kernal knows how to
+do that automatically for a compiled program, yet don&rsquo;t know how for a script.</p></li>
+
+<li><p>That&rsquo;s why we use <strong>#!</strong> to tells the Kernal which interpreter to invoke.</p></li>
+
+<li><p>Most common one is #! /bin/sh - (the bare option says that there are no more shell options)</p></li>
 </ul>
 
-<p>Let&rsquo;s take a look at the below example:</p>
-
-<p><strong>Person.h</strong></p>
-
-<pre><code>    #pragma once
-    
-    #include &lt;string&gt;
-    
-    class Person
-    {
-    
-    private:
-        std::string firstName;
-        std::string lastName;
-    
-        int age;
-    
-    public:
-        Person();
-    
-        Person(std::string fName, std::string lName);
-    
-        Person(std::string fName, std::string lName, int age);
-    
-        ~Person();
-
-        void SayHello();
-    };
-</code></pre>
-
-<p><strong>Person.cpp</strong></p>
-
-<pre><code>    #include &quot;stdafx.h&quot;
-    #include &quot;Person.h&quot;
-    #include &lt;iostream&gt;
-    
-    Person::Person()
-    {
-    
-    }
-    
-    Person::Person(std::string fName, std::string lName)
-    {
-        this -&gt; firstName = fName;
-        this -&gt; lastName = lName;
-    }
-    
-    Person::Person(std::string fName, std::string lName, int age)
-    {
-        this -&gt; firstName = fName;
-        this -&gt; lastName = lName;
-    
-        this -&gt; age = age;
-    }
-    
-    
-    Person::~Person()
-    {
-    }
-</code></pre>
+<h4 id="2-5-basic-shell-constructs">2.5 Basic Shell Constructs</h4>
 
 <ul>
-<li>The first constructor is the default constructor. It has no parameters and because we have not initialized our private
-member variables, this constructor will do so with the default values for data types of those member variables.</li>
-<li>The second constructor takes two arguments and uses those to initialize the first and last name member
-variables in the class.  Notice, we don&rsquo;t have age in the arguments, it may or may not get initialized depends on the compiler.</li>
-</ul>
-
-<h4 id="scope-in-classes"><strong>Scope in Classes</strong></h4>
-
-<p>The way that we declare our objects is important for determining how we call the member functions or access the public member variables.</p>
-
-<pre><code>Person *pOne = new Person();
-Person p;
-Person &amp;Ref = p;
-
-pOne-&gt;SayHello();
-p.SayHello();
-pRef.SayHello();
-</code></pre>
+<li><strong>;</strong> semicolons seperate multiple command, shell will executes them sequentially</li>
+<li><strong>&amp;</strong> ampersand runs the command in the background</li>
+<li><strong>$</strong> symbol is used to retrieve a variable value:
 
 <ul>
-<li>Like the example shown above, if we dynamically allocate memory for a new Person object, we use the <strong>arrow member selection operator -&gt;</strong>
-to gain access.</li>
-<li>In contrast, if we create a new Person object without using a pointer or the new keyword, we use a <strong>dot operator</strong> to access
-the member function. Notice, the reference is the same</li>
-<li>Finally, if the member function is a static function , we would use <strong>Person::SayHello()</strong> without instantiate an object of the Person class</li>
+<li><strong>$ myvar=foobar ; echo $myvar</strong>. Notice when assign the value, there can&rsquo;t be space near the = sign</li>
+<li><strong>$ first=isaac middle=bashevis last=singer</strong> multiple assignments are allowed on one line</li>
+<li><strong>$ fullname=&ldquo;isaac bashevis signer&rdquo; ; echo $fullname</strong> use quotes if you want to assign value with spaces</li>
+</ul></li>
 </ul>
 
-<hr />
+<h5 id="printf">printf</h5>
 
-<p>The definition of <strong>encapsulation</strong> in C++ has two layers:</p>
+<p>The full syntax of the printf command has two parts:</p>
 
 <ul>
-<li>First is &ldquo;Inclusion&rdquo;, meaning user can take all of member functions and member variables and enclose it within a class</li>
-<li>Second is &ldquo;Data Restriction&rdquo;, meaning the outside user cannot direclty change the data of the class, only through constructors or
-member functions. This helps the class to reject invalid input</li>
+<li>The first is a string describing the desired output, second part is an argument list, such as a list of strings or
+variable values: <strong><em>$ printf &ldquo;The first program always prints &lsquo;%s, %s!&rsquo;\n&rdquo; Hello world</em></strong> and it will output: The first
+program always prints &lsquo;Hello, world!&rsquo;</li>
+<li><strong>%</strong> is the format specifier, two of the main format specifiers are <strong>%s</strong> for strings and <strong>%d</strong> for decimal integers</li>
+<li><strong>\n</strong> is the escape sequence</li>
 </ul>
 
-<hr />
+<h5 id="basic-i-o-redirection">Basic I/O Redirection</h5>
 
-<p>A <strong>namespace</strong> is a &ldquo;scope container&rdquo; where you can place your classes, variables, or other identifiers to prevent name conflicts. For ecample,
-&ldquo;std&rdquo; is a namespace when you use &ldquo;std::cout&rdquo; Again, the &ldquo;::&rdquo; symbol is called <strong>scope resolution operator</strong> that allows user
-gain access to certain function in certain namespace</p>
+<p>Standard I/O is perhaps the most fundamental concept in the Software Tools philosophy.
+The idea is that programs should have a data source, a data sink (where data
+goes), and a place to report problems. These are referred to by the names standard
+input, standard output, and standard error, respectively.</p>
+
+<ul>
+<li>Change standard input with &ldquo;&lt;&rdquo;:   <strong>$ tr -d &lsquo;\r&rsquo; &lt; dos-file.txt</strong></li>
+<li>Change standard output with &ldquo;&gt;&rdquo;:   <strong>$ tr -d &lsquo;\r&rsquo; &lt; dos-file.txt &gt; unix-file.txt</strong></li>
+<li>Think of &lt; and &gt; as data &ldquo;funnels&rdquo;, data goes in to the big end and comes out of the small end</li>
+</ul>
+
+<h5 id="special-files-dev-null-and-dev-tty">Special files: /dev/null and /dev/tty</h5>
+
+<ul>
+<li><strong>/dev/null</strong>: data sent to this file is thrown away by the system:</li>
+<li><strong>/dev/tty</strong>: to get data typed by a human. (tty stands for teletypewriter)</li>
+</ul>
+
+<h5 id="basic-command-searching">Basic Command Searching</h5>
+
+<ul>
+<li><strong>$PATH</strong> is the search path of the system. It contains multiple bin directory</li>
+<li>you can add your own scripts into a new bin, and then add this bin&rsquo;s directory to the search path such as:
+<strong>$ cd ; mkdir bin ; mv nusers bin; $ cd ; mv nusers bin ; PATH=$PATH:$HOME/bin ; nusers</strong></li>
+</ul>
 
 
 <footer class=" footline" >
@@ -536,77 +464,8 @@ gain access to certain function in certain namespace</p>
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -632,6 +491,72 @@ gain access to certain function in certain namespace</p>
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -642,10 +567,10 @@ gain access to certain function in certain namespace</p>
 
 
         
-            <a class="nav nav-prev" href="/intermediate_c&#43;&#43;/module_1_pointers/" title="Module 1: Pointers"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/shell_scripting/" title="Shell Scripting"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/intermediate_c&#43;&#43;/module_3_more_oop_in_c&#43;&#43;/" title="Module 3: More OOP in C&#43;&#43;" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/intermediate_c&#43;&#43;/" title="Intermediate C&#43;&#43;" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

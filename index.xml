@@ -11,7 +11,16 @@
     
     
     <item>
-      <title>Module One: Pointers</title>
+      <title>Chapter 2. Getting Started</title>
+      <link>https://ruthnot.github.io/shell_scripting/chapter_2_getting_started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruthnot.github.io/shell_scripting/chapter_2_getting_started/</guid>
+      <description>2.1 Scripting Languages Versus Compiled Languages  Most larger scale programs are written in a compiled language, such as Fortran, Ada, Pascal, C, C++ or Java. Compiled language are efficient, but usually work at a low level. Scripting languages are: Shell, Python, Perl, Ruby The advantage of scripting languages is that they are often higher level, being able to deal with objects such as files and directories more easily. The disadvantage of scripting language is that they are less efficient.</description>
+    </item>
+    
+    <item>
+      <title>Module 1: Pointers</title>
       <link>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_1_pointers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -21,12 +30,21 @@ int num = 3; int* pNum = &amp;amp;num;   Here, the &amp;amp; is the address-of o
     </item>
     
     <item>
-      <title>Module Two: More C&#43;&#43; Class</title>
+      <title>Module 2: More C&#43;&#43; Class</title>
       <link>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/</guid>
       <description>Splitting Classes  In C++, the common practice is to create your classes as two separate files. The header files, with a .h extension on the filename, is used to contain the declarations found in the class file. Header file is more like a &amp;ldquo;manual&amp;rdquo; to the user, so that user only needs to know how to use this class, ignoring how methods are actually implemented. Declarations in the header file includes function prototypes and class constructors typically.</description>
+    </item>
+    
+    <item>
+      <title>Module 3: More OOP in C&#43;&#43;</title>
+      <link>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_3_more_oop_in_c&#43;&#43;/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruthnot.github.io/intermediate_c&#43;&#43;/module_3_more_oop_in_c&#43;&#43;/</guid>
+      <description> Inheritance Encapsulation and Protected Access Virtual Functions and Abstract Classes </description>
     </item>
     
   </channel>

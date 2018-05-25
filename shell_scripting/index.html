@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Module 2: More C&#43;&#43; Class :: Peach Colony</title>
+    <title>Shell Scripting :: Peach Colony</title>
     
     
     <link href="/css/nucleus.css?1527233850" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/">
+  <body class="" data-url="/shell_scripting/">
     <nav id="sidebar" class="">
 
 
@@ -91,7 +91,7 @@
   
     
     <li data-nav-id="/intermediate_c&#43;&#43;/" title="Intermediate C&#43;&#43;" class="dd-item 
-        parent
+        
         
         
         ">
@@ -134,7 +134,7 @@
  
   
     
-      <li data-nav-id="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/" title="Module 2: More C&#43;&#43; Class" class="dd-item active">
+      <li data-nav-id="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/" title="Module 2: More C&#43;&#43; Class" class="dd-item ">
         <a href="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/">
         Module 2: More C&#43;&#43; Class
         
@@ -180,8 +180,8 @@
   
     
     <li data-nav-id="/shell_scripting/" title="Shell Scripting" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/shell_scripting/">
@@ -257,8 +257,6 @@
                         </a>
                     </span>
                   
-                  <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
-                  
                   <span class="links">
                     
           
@@ -267,13 +265,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/'>Main Page</a> > <a href='/intermediate_c++/'>Intermediate C++</a> > Module 2: More C++ Class
-          
-         
+            <a href='/'>Main Page</a> > Shell Scripting
           
          
           
@@ -281,36 +273,14 @@
                   </span>
                 </div>
                 
-                    <div class="progress">
-    <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#splitting-classes"><strong>Splitting Classes</strong></a></li>
-<li><a href="#constructors-and-destructors"><strong>Constructors and Destructors</strong></a></li>
-<li><a href="#scope-in-classes"><strong>Scope in Classes</strong></a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-    </div>
-</div>
-
-                
               </div>
             </div>
             
 
         
+          <div id="chapter">
+        
         <div id="body-inner">
-          
-            <h1>Module 2: More C&#43;&#43; Class</h1>
           
 
         
@@ -318,193 +288,27 @@
 
 
 
-<h4 id="splitting-classes"><strong>Splitting Classes</strong></h4>
+<h2 id="shell-scripting">Shell Scripting</h2>
+
+<p>Author:</p>
+
+<p>Arnold Robbins &amp; Nelson H. F. Beebe</p>
+
+<p>printed by O&rsquo;Relly</p>
+
+<h4 id="content">Content:</h4>
 
 <ul>
-<li>In C++, the common practice is to create your classes as two separate files. The header files, with a
-.h extension on the filename, is used to contain the declarations found in the class file.</li>
-<li>Header file is more like a &ldquo;manual&rdquo; to the user, so that user only needs to know how to use this class, ignoring how
-methods are actually implemented.</li>
-<li>Declarations in the header file includes function prototypes
-and class constructors typically.</li>
-<li>The actual implementation of the class are in a .cpp or .c file.</li>
+<li>Chapter 2: Getting Started</li>
 </ul>
-
-<p>Next, lets take a look at an example header file: Math.h</p>
-
-<pre><code>    // Math.h
-    // Header file for the Math class
-
-    #pragma once
-
-    // Math class definition
-    static class Math
-    {
-        public:
-
-        // given base and exponent, calculate value
-        static int pow(int base, int exp);
-
-    };
-</code></pre>
-
-<ul>
-<li><code>#pragma once</code> is a preprocessor directive(like <code>#include</code>) that tells the compiler
-to only include this header once, regardless of how many times it has been imported in the program</li>
-<li>The <code>static</code> keyword meaning we don&rsquo;t need to instantiate this class before using. Otherwise, we
-need to do:</li>
-</ul>
-
-<pre><code>    Math math = new Math();
-    math.pow(2, 8);
-</code></pre>
-
-<p>this is helpful for a utility class such as this math class. Notice that the static class is only supported
-by Visual Studio, most the cases, people only use static member function instead of class.</p>
-
-<p>Next, let&rsquo;s take a look at the implementation of this class, the .cpp file:</p>
-
-<pre><code>    #include &quot;stdafx.h&quot;
-    #include &quot;Math.h&quot;
-
-    int Math::pow(int base, int exp)
-    {
-        int result = 1;
-
-        for (int i = 0; i &lt; exp; i++)
-        {
-            result = result * base;
-        }
-
-        return result;
-    }
-</code></pre>
-
-<ul>
-<li>In the actual function implementation, we use Math::pow instead of just Math. The <strong>::</strong>
-is a <strong>scope resolution operator</strong>. In this case, it is used to call static members of the class.</li>
-</ul>
-
-<h4 id="constructors-and-destructors"><strong>Constructors and Destructors</strong></h4>
-
-<ul>
-<li>A constructor is used to initialize data members of a class</li>
-<li>Each class will have only one default constructor. If you don&rsquo;t manually create one, the compiler
-will create one automatically.</li>
-<li>The default constructor initialize member variables to default values</li>
-</ul>
-
-<p>Let&rsquo;s take a look at the below example:</p>
-
-<p><strong>Person.h</strong></p>
-
-<pre><code>    #pragma once
-    
-    #include &lt;string&gt;
-    
-    class Person
-    {
-    
-    private:
-        std::string firstName;
-        std::string lastName;
-    
-        int age;
-    
-    public:
-        Person();
-    
-        Person(std::string fName, std::string lName);
-    
-        Person(std::string fName, std::string lName, int age);
-    
-        ~Person();
-
-        void SayHello();
-    };
-</code></pre>
-
-<p><strong>Person.cpp</strong></p>
-
-<pre><code>    #include &quot;stdafx.h&quot;
-    #include &quot;Person.h&quot;
-    #include &lt;iostream&gt;
-    
-    Person::Person()
-    {
-    
-    }
-    
-    Person::Person(std::string fName, std::string lName)
-    {
-        this -&gt; firstName = fName;
-        this -&gt; lastName = lName;
-    }
-    
-    Person::Person(std::string fName, std::string lName, int age)
-    {
-        this -&gt; firstName = fName;
-        this -&gt; lastName = lName;
-    
-        this -&gt; age = age;
-    }
-    
-    
-    Person::~Person()
-    {
-    }
-</code></pre>
-
-<ul>
-<li>The first constructor is the default constructor. It has no parameters and because we have not initialized our private
-member variables, this constructor will do so with the default values for data types of those member variables.</li>
-<li>The second constructor takes two arguments and uses those to initialize the first and last name member
-variables in the class.  Notice, we don&rsquo;t have age in the arguments, it may or may not get initialized depends on the compiler.</li>
-</ul>
-
-<h4 id="scope-in-classes"><strong>Scope in Classes</strong></h4>
-
-<p>The way that we declare our objects is important for determining how we call the member functions or access the public member variables.</p>
-
-<pre><code>Person *pOne = new Person();
-Person p;
-Person &amp;Ref = p;
-
-pOne-&gt;SayHello();
-p.SayHello();
-pRef.SayHello();
-</code></pre>
-
-<ul>
-<li>Like the example shown above, if we dynamically allocate memory for a new Person object, we use the <strong>arrow member selection operator -&gt;</strong>
-to gain access.</li>
-<li>In contrast, if we create a new Person object without using a pointer or the new keyword, we use a <strong>dot operator</strong> to access
-the member function. Notice, the reference is the same</li>
-<li>Finally, if the member function is a static function , we would use <strong>Person::SayHello()</strong> without instantiate an object of the Person class</li>
-</ul>
-
-<hr />
-
-<p>The definition of <strong>encapsulation</strong> in C++ has two layers:</p>
-
-<ul>
-<li>First is &ldquo;Inclusion&rdquo;, meaning user can take all of member functions and member variables and enclose it within a class</li>
-<li>Second is &ldquo;Data Restriction&rdquo;, meaning the outside user cannot direclty change the data of the class, only through constructors or
-member functions. This helps the class to reject invalid input</li>
-</ul>
-
-<hr />
-
-<p>A <strong>namespace</strong> is a &ldquo;scope container&rdquo; where you can place your classes, variables, or other identifiers to prevent name conflicts. For ecample,
-&ldquo;std&rdquo; is a namespace when you use &ldquo;std::cout&rdquo; Again, the &ldquo;::&rdquo; symbol is called <strong>scope resolution operator</strong> that allows user
-gain access to certain function in certain namespace</p>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-
+        
+            </div> 
         
         </div> 
         
@@ -536,6 +340,73 @@ gain access to certain function in certain namespace</p>
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -564,74 +435,6 @@ gain access to certain function in certain namespace</p>
             
         
                     
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -642,10 +445,10 @@ gain access to certain function in certain namespace</p>
 
 
         
-            <a class="nav nav-prev" href="/intermediate_c&#43;&#43;/module_1_pointers/" title="Module 1: Pointers"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/intermediate_c&#43;&#43;/module_3_more_oop_in_c&#43;&#43;/" title="Module 3: More OOP in C&#43;&#43;"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/intermediate_c&#43;&#43;/module_3_more_oop_in_c&#43;&#43;/" title="Module 3: More OOP in C&#43;&#43;" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/shell_scripting/chapter_2_getting_started/" title="Chapter 2. Getting Started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -675,4 +478,3 @@ gain access to certain function in certain namespace</p>
 
   </body>
 </html>
-
