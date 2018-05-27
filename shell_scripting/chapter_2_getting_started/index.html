@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.40.3" />
+    <meta name="generator" content="Hugo 0.41" />
     <meta name="description" content="">
 
 
@@ -12,17 +12,17 @@
     <title>Chapter 2. Getting Started :: Peach Colony</title>
     
     
-    <link href="/css/nucleus.css?1527233850" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1527233850" rel="stylesheet">
-    <link href="/css/hybrid.css?1527233850" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1527233850" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1527233850" rel="stylesheet">
-    <link href="/css/auto-complete.css?1527233850" rel="stylesheet">
-    <link href="/css/theme.css?1527233850" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1527233850" rel="stylesheet">
+    <link href="/css/nucleus.css?1527386443" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1527386443" rel="stylesheet">
+    <link href="/css/hybrid.css?1527386443" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1527386443" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1527386443" rel="stylesheet">
+    <link href="/css/auto-complete.css?1527386443" rel="stylesheet">
+    <link href="/css/theme.css?1527386443" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1527386443" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1527233850"></script>
+    <script src="/js/jquery-2.x.min.js?1527386443"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -67,14 +67,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1527233850"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1527233850"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1527386443"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1527386443"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="/js/search.js?1527233850"></script>
+<script type="text/javascript" src="/js/search.js?1527386443"></script>
 
     
   </div>
@@ -289,12 +289,12 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
 <li><a href="#2-1-scripting-languages-versus-compiled-languages">2.1 Scripting Languages Versus Compiled Languages</a></li>
 <li><a href="#2-3-a-simple-script">2.3 A Simple Script</a></li>
 <li><a href="#2-4-self-contained-scripts-the-first-line">2.4 Self-Contained Scripts: The #! First Line</a></li>
 <li><a href="#2-5-basic-shell-constructs">2.5 Basic Shell Constructs</a>
+<ul>
+<li>
 <ul>
 <li><a href="#printf">printf</a></li>
 <li><a href="#basic-i-o-redirection">Basic I/O Redirection</a></li>
@@ -302,6 +302,8 @@
 <li><a href="#basic-command-searching">Basic Command Searching</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#2-6-accessing-shell-script-arguments">2.6 Accessing Shell Script Arguments</a></li>
+<li><a href="#2-7-simple-execution-tracing">2.7 Simple Execution Tracing</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -325,7 +327,7 @@
 
 
 
-<h4 id="2-1-scripting-languages-versus-compiled-languages">2.1 Scripting Languages Versus Compiled Languages</h4>
+<h3 id="2-1-scripting-languages-versus-compiled-languages">2.1 Scripting Languages Versus Compiled Languages</h3>
 
 <ul>
 <li>Most larger scale programs are written in a compiled language, such as Fortran, Ada, Pascal, C, C++ or Java.</li>
@@ -336,7 +338,7 @@ files and directories more easily.</li>
 <li>The disadvantage of scripting language is that they are less efficient.</li>
 </ul>
 
-<h4 id="2-3-a-simple-script">2.3 A Simple Script</h4>
+<h3 id="2-3-a-simple-script">2.3 A Simple Script</h3>
 
 <p><strong>$ who</strong></p>
 
@@ -362,7 +364,7 @@ files and directories more easily.</li>
 
 <p><strong>$ ./nusers</strong>: Execute the script</p>
 
-<h4 id="2-4-self-contained-scripts-the-first-line">2.4 Self-Contained Scripts: The #! First Line</h4>
+<h3 id="2-4-self-contained-scripts-the-first-line">2.4 Self-Contained Scripts: The #! First Line</h3>
 
 <ul>
 <li><p>When runs a program, kernel will start a new process and run that program in that process. Kernal knows how to
@@ -373,7 +375,7 @@ do that automatically for a compiled program, yet don&rsquo;t know how for a scr
 <li><p>Most common one is #! /bin/sh - (the bare option says that there are no more shell options)</p></li>
 </ul>
 
-<h4 id="2-5-basic-shell-constructs">2.5 Basic Shell Constructs</h4>
+<h3 id="2-5-basic-shell-constructs">2.5 Basic Shell Constructs</h3>
 
 <ul>
 <li><strong>;</strong> semicolons seperate multiple command, shell will executes them sequentially</li>
@@ -426,6 +428,66 @@ input, standard output, and standard error, respectively.</p>
 <li>you can add your own scripts into a new bin, and then add this bin&rsquo;s directory to the search path such as:
 <strong>$ cd ; mkdir bin ; mv nusers bin; $ cd ; mv nusers bin ; PATH=$PATH:$HOME/bin ; nusers</strong></li>
 </ul>
+
+<h3 id="2-6-accessing-shell-script-arguments">2.6 Accessing Shell Script Arguments</h3>
+
+<p><strong>Positional Parameters</strong> represet command-line arguments. They also represent a function&rsquo;s arguments within shell functions.
+They ese numbers to represent the index of argument: <code>$1 $2 ${10}</code>. For historical reason, you have to enclose the number in braces if it&rsquo;s greater then 9.</p>
+
+<p>For example, if we want to create a shell script help us to find a user who&rsquo;s logged in the system, we can do something like:</p>
+
+<pre><code>$ cat &gt; finduser
+#! /bin/sh
+
+who | grep $1
+^D
+
+$ chmod +x finduser
+$ ./finduser ruthnot
+$ ./finduser bethy
+</code></pre>
+
+<ul>
+<li>We use <strong>$1</strong> to represent the first argument we typed in the command line</li>
+<li>Anytime you want to do searching, that&rsquo;s a job for the <strong>grep</strong> command, which stands for &ldquo;global regular expression print&rdquo;, to print all lines matching
+a certain pattern.</li>
+</ul>
+
+<h3 id="2-7-simple-execution-tracing">2.7 Simple Execution Tracing</h3>
+
+<p>Execution tracing is a option that if you turn on, the output of the shell script will include each step of the actual execution, so that you can see what the
+script is actually doing without opening the script.</p>
+
+<ul>
+<li>Use &ldquo;set -x [filename]&rdquo; to turn on the execution tracing</li>
+<li>Within the script, use &ldquo;set -x&rdquo; to turn on, and &ldquo;set +x&rdquo; to turn off the execution tracing</li>
+</ul>
+
+<p>Example:</p>
+
+<pre><code>$ cat &gt; trace1.sh
+#! /bin/sh
+
+set -x
+echo 1st echo
+
+set +x 
+echo 2nd echo
+^D
+
+$ chmod +x trace1.sh
+$ ./trace1.sh
+</code></pre>
+
+<p>And the result will look like:</p>
+
+<pre><code>+ echo 1st echo
+1st echo
++ set +x
+2nd echo
+</code></pre>
+
+<p>After the &ldquo;+&rdquo; plus symbole is what the script is executing.</p>
 
 
 <footer class=" footline" >
@@ -579,20 +641,20 @@ input, standard output, and standard error, respectively.</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1527233850"></script>
-    <script src="/js/perfect-scrollbar.min.js?1527233850"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1527233850"></script>
-    <script src="/js/jquery.sticky.js?1527233850"></script>
-    <script src="/js/featherlight.min.js?1527233850"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1527233850"></script>
-    <script src="/js/highlight.pack.js?1527233850"></script>
+    <script src="/js/clipboard.min.js?1527386443"></script>
+    <script src="/js/perfect-scrollbar.min.js?1527386443"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1527386443"></script>
+    <script src="/js/jquery.sticky.js?1527386443"></script>
+    <script src="/js/featherlight.min.js?1527386443"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1527386443"></script>
+    <script src="/js/highlight.pack.js?1527386443"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1527233850"></script>
-    <script src="/js/learn.js?1527233850"></script>
-    <script src="/js/hugo-learn.js?1527233850"></script>
+    <script src="/js/modernizr.custom.71422.js?1527386443"></script>
+    <script src="/js/learn.js?1527386443"></script>
+    <script src="/js/hugo-learn.js?1527386443"></script>
 
-    <link href="/mermaid/mermaid.css?1527233850" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1527233850"></script>
+    <link href="/mermaid/mermaid.css?1527386443" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1527386443"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
