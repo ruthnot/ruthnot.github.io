@@ -12,17 +12,17 @@
     <title>Module 3: More OOP in C&#43;&#43; :: Peach Colony</title>
     
     
-    <link href="/css/nucleus.css?1527386443" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1527386443" rel="stylesheet">
-    <link href="/css/hybrid.css?1527386443" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1527386443" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1527386443" rel="stylesheet">
-    <link href="/css/auto-complete.css?1527386443" rel="stylesheet">
-    <link href="/css/theme.css?1527386443" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1527386443" rel="stylesheet">
+    <link href="/css/nucleus.css?1527451741" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1527451741" rel="stylesheet">
+    <link href="/css/hybrid.css?1527451741" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1527451741" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1527451741" rel="stylesheet">
+    <link href="/css/auto-complete.css?1527451741" rel="stylesheet">
+    <link href="/css/theme.css?1527451741" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1527451741" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1527386443"></script>
+    <script src="/js/jquery-2.x.min.js?1527451741"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -67,14 +67,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1527386443"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1527386443"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1527451741"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1527451741"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="/js/search.js?1527386443"></script>
+<script type="text/javascript" src="/js/search.js?1527451741"></script>
 
     
   </div>
@@ -156,6 +156,25 @@
       <li data-nav-id="/intermediate_c&#43;&#43;/module_3_more_oop_in_c&#43;&#43;/" title="Module 3: More OOP in C&#43;&#43;" class="dd-item active">
         <a href="/intermediate_c&#43;&#43;/module_3_more_oop_in_c&#43;&#43;/">
         Module 3: More OOP in C&#43;&#43;
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/intermediate_c&#43;&#43;/module_4_streams_and_files/" title="Module 4: Streams and Files" class="dd-item ">
+        <a href="/intermediate_c&#43;&#43;/module_4_streams_and_files/">
+        Module 4: Streams and Files
         
         </a>
     </li>
@@ -289,12 +308,13 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#encapsulation-and-protected-access">Encapsulation and Protected Access</a>
 <ul>
-<li><a href="#inheritance"><strong>Inheritance</strong></a></li>
-<li><a href="#encapsulation-and-protected-access"><strong>Encapsulation and Protected Access</strong></a></li>
-<li><a href="#virtual-functions-and-abstract-classes"><strong>Virtual Functions and Abstract Classes</strong></a></li>
+<li><a href="#protected-class">Protected Class</a></li>
+<li><a href="#friend-class">Friend Class</a></li>
 </ul></li>
+<li><a href="#virtual-functions-and-abstract-classes">Virtual Functions and Abstract Classes</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -318,11 +338,129 @@
 
 
 
-<h4 id="inheritance"><strong>Inheritance</strong></h4>
+<h3 id="inheritance">Inheritance</h3>
 
-<h4 id="encapsulation-and-protected-access"><strong>Encapsulation and Protected Access</strong></h4>
+<ul>
+<li>Inheritance meaning one can write a new class that inherit the members of an existing class. The existing class is called <strong>base</strong> class, the new class is called <strong>derived</strong> class.</li>
+<li>There&rsquo;re three types of inheritance in C++, public, private and protected, below are the rules:
 
-<h4 id="virtual-functions-and-abstract-classes"><strong>Virtual Functions and Abstract Classes</strong></h4>
+<ul>
+<li>Public Inheritance:
+
+<ul>
+<li>public in base class remains public in derived class</li>
+<li>protected in base class remains  protected in derived class</li>
+<li>private in base class remains private in derived class</li>
+</ul></li>
+<li>Protected Inheritance:
+
+<ul>
+<li>public and protected in base class becomes protected in derived class</li>
+<li>private in base class remains private in derived class</li>
+</ul></li>
+<li>Private Inheritance:
+
+<ul>
+<li>public and protected and private in base class all becomes  private in derived class</li>
+</ul></li>
+</ul></li>
+<li>Remember, no matter which type of inheritance you choose, derived class can never access base class&rsquo; private members directly.</li>
+<li>Default inheritance is &ldquo;private&rdquo; if you&rsquo;re not using any access specifier. However, &ldquo;private&rdquo; and &ldquo;protected&rdquo; inheritance are rarely used. Hence, usually you need to add a &ldquo;public&rdquo; specifier when using inheritance, like this:</li>
+</ul>
+
+<pre><code>class Rectangle: public Shape{
+};
+</code></pre>
+
+<h3 id="encapsulation-and-protected-access">Encapsulation and Protected Access</h3>
+
+<h4 id="protected-class">Protected Class</h4>
+
+<ul>
+<li>Protected class serves the purpose that you want to keep certain members of the base class private to the &ldquo;outside world&rdquo;, but public to the drived class.</li>
+</ul>
+
+<h4 id="friend-class">Friend Class</h4>
+
+<ul>
+<li>The friend class can access all members (including private members) from the first class.</li>
+<li>A good way of explaining friend class is the so called &ldquo;Handle-Body&rdquo; idiom in C++. The idiom splits one class into two intimately related class: a &ldquo;body&rdquo; class that defines the private data, and a &ldquo;handle&rdquo; class that defines the public behavior. The body defines the handle class as a friend class, so that the handle class can access all the members in the body class</li>
+<li>Here is the implementation:</li>
+</ul>
+
+<p><strong>Body.h</strong></p>
+
+<pre><code>class Handle;  // Forward reference of the &quot;handle&quot; class, so the compiler knows about it.
+
+class Body
+{
+    friend class Handle;
+
+    private:
+        int someData;
+        ...
+};
+</code></pre>
+
+<p><strong>Handle.h</strong></p>
+
+<pre><code>#include &quot;Body.h&quot;
+
+class Handle
+{
+private:
+    Body* body; //The &quot;handle&quot; class typically maintains an internal instance of the &quot;body&quot; class.
+
+public:
+    Handle();
+    ~Handle();
+
+    void someOperationOnBody();
+    ...
+};
+</code></pre>
+
+<p><strong>Handle.cpp</strong></p>
+
+<pre><code>#include &quot;Handle.h&quot;
+
+Handle::Handle()
+{
+    body = new Body; //Create the underlying &quot;body&quot; object.
+}
+
+Handle::someOperationOnBody()
+{
+    someData = 42; //Perform operations on the underlying &quot;body&quot; object.
+}
+</code></pre>
+
+<p><strong>Main.cpp</strong></p>
+
+<pre><code>#include &quot;Handle.h&quot;
+
+int main()
+{
+    Handle h;
+    h.someOperationOnBody();
+
+    return 0;
+}
+</code></pre>
+
+<ul>
+<li>this way, client code just works with the &ldquo;handle&rdquo; class, and has no knowledge of the underlying &ldquo;body class&rdquo;.</li>
+<li>The intent of this idiom is to shield client code from the details of the &ldquo;body class&rdquo;, so that its implementation can vary dramatically without impacting the rest of the application</li>
+<li>In other words, the &ldquo;handle&rdquo; class serves a &ldquo;interface&rdquo; of the &ldquo;body&rdquo; class.</li>
+</ul>
+
+<h3 id="virtual-functions-and-abstract-classes">Virtual Functions and Abstract Classes</h3>
+
+<ul>
+<li>We use inheritance to reuse command code across a hierachy of related class, but sometimes, a derived class need somehow tweak some of the member from the base class to better perform, we call it <strong>overriding</strong>.</li>
+<li>To define overridable member function, we use the keyword <strong>virtual</strong> to create a virtual funciton.</li>
+<li>Pure Virtual function means that it won&rsquo;t be implemented at all at the base class, and the derived class has to override it.</li>
+</ul>
 
 
 <footer class=" footline" >
@@ -422,9 +560,6 @@
             
         
                     
-            
-        
-                    
                         
             
             
@@ -432,6 +567,25 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -470,7 +624,7 @@
             <a class="nav nav-prev" href="/intermediate_c&#43;&#43;/module_2_more_c&#43;&#43;_class/" title="Module 2: More C&#43;&#43; Class"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/shell_scripting/" title="Shell Scripting" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/intermediate_c&#43;&#43;/module_4_streams_and_files/" title="Module 4: Streams and Files" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -479,20 +633,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1527386443"></script>
-    <script src="/js/perfect-scrollbar.min.js?1527386443"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1527386443"></script>
-    <script src="/js/jquery.sticky.js?1527386443"></script>
-    <script src="/js/featherlight.min.js?1527386443"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1527386443"></script>
-    <script src="/js/highlight.pack.js?1527386443"></script>
+    <script src="/js/clipboard.min.js?1527451741"></script>
+    <script src="/js/perfect-scrollbar.min.js?1527451741"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1527451741"></script>
+    <script src="/js/jquery.sticky.js?1527451741"></script>
+    <script src="/js/featherlight.min.js?1527451741"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1527451741"></script>
+    <script src="/js/highlight.pack.js?1527451741"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1527386443"></script>
-    <script src="/js/learn.js?1527386443"></script>
-    <script src="/js/hugo-learn.js?1527386443"></script>
+    <script src="/js/modernizr.custom.71422.js?1527451741"></script>
+    <script src="/js/learn.js?1527451741"></script>
+    <script src="/js/hugo-learn.js?1527451741"></script>
 
-    <link href="/mermaid/mermaid.css?1527386443" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1527386443"></script>
+    <link href="/mermaid/mermaid.css?1527451741" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1527451741"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
